@@ -12255,11 +12255,11 @@ class Service {
     }
   }
   async programsIndex() {
-    const response = await this.client(`${"https://local.liftosaur.com:8080/"}/programdata/index.json?v=${"18a7dd1"}`);
+    const response = await this.client(`${"https://local.liftosaur.com:8080/"}/programdata/index.json?v=${"be0020a"}`);
     return response.json();
   }
   async programDetail(id, category = "builtin") {
-    const response = await this.client(`${"https://local.liftosaur.com:8080/"}/programdata/programs/${category}/${id}.json?v=${"18a7dd1"}`);
+    const response = await this.client(`${"https://local.liftosaur.com:8080/"}/programdata/programs/${category}/${id}.json?v=${"be0020a"}`);
     return response.json();
   }
   async getMuscles(exercise) {
@@ -15264,7 +15264,7 @@ async function PraxonCloud_uploadSnapshot(args) {
     last_synced_storage: args.lastSyncedStorage ?? null,
     storage_version: args.storage.version ?? null,
     device_id: args.deviceId ?? null,
-    app_version: "18a7dd1" ?? 0
+    app_version: "be0020a" ?? 0
   };
   const { data, error } = await client.from(STORAGE_SNAPSHOTS_TABLE).upsert(payload, { onConflict: "user_id" }).select().single();
   if (error) {
@@ -38448,6 +38448,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 async function LogUtils_log(user, action, affiliates, subscriptions, onClear, key, referrer) {
+  if (!__API_HOST__) {
+    return;
+  }
   let enforce = false;
   if (typeof globalThis !== "undefined") {
     const currentUrl = (0,_url__WEBPACK_IMPORTED_MODULE_0__.UrlUtils_build)(globalThis.location.href);
@@ -38965,7 +38968,7 @@ function lg(name, extra, service, tempUserId) {
   const event = {
     type: "event",
     timestamp: Date.now(),
-    commithash:  true ? "18a7dd1" : 0,
+    commithash:  true ? "be0020a" : 0,
     isMobile,
     iOSVersion: (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_isIos)() ? (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_iosAppVersion)() : void 0,
     androidVersion: (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_isAndroid)() ? (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_androidAppVersion)() : void 0,
@@ -39087,7 +39090,7 @@ function RollbarUtils_config(payload) {
       client: {
         javascript: {
           source_map_enabled: true,
-          code_version: "18a7dd17a4829c274341b161c766a32c15c5c60b",
+          code_version: "be0020a2a7f81c4e1ea97023bdcc823d5ab2fd68",
           guess_uncaught_frames: true
         }
       },

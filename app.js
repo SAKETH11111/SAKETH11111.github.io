@@ -547,13 +547,13 @@ class Service {
   }
   programsIndex() {
     return __async(this, null, function* () {
-      const response = yield this.client(`${""}/programdata/index.json?v=${"18a7dd1"}`);
+      const response = yield this.client(`${""}/programdata/index.json?v=${"be0020a"}`);
       return response.json();
     });
   }
   programDetail(id, category = "builtin") {
     return __async(this, null, function* () {
-      const response = yield this.client(`${""}/programdata/programs/${category}/${id}.json?v=${"18a7dd1"}`);
+      const response = yield this.client(`${""}/programdata/programs/${category}/${id}.json?v=${"be0020a"}`);
       return response.json();
     });
   }
@@ -915,7 +915,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _ducks_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../ducks/reducer */ "./src/ducks/reducer.ts");
+/* harmony import */ var _ducks_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ducks/reducer */ "./src/ducks/reducer.ts");
 /* harmony import */ var _chooseProgram__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./chooseProgram */ "./src/components/chooseProgram.tsx");
 /* harmony import */ var _programHistory__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./programHistory */ "./src/components/programHistory.tsx");
 /* harmony import */ var _models_program__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../models/program */ "./src/models/program.ts");
@@ -923,7 +923,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _screenSettings__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./screenSettings */ "./src/components/screenSettings.tsx");
 /* harmony import */ var _screenAccount__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./screenAccount */ "./src/components/screenAccount.tsx");
 /* harmony import */ var _screenApiKeys__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./screenApiKeys */ "./src/components/screenApiKeys.tsx");
-/* harmony import */ var _utils_useThunkReducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/useThunkReducer */ "./src/utils/useThunkReducer.ts");
+/* harmony import */ var _utils_useThunkReducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/useThunkReducer */ "./src/utils/useThunkReducer.ts");
 /* harmony import */ var _ducks_thunks__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../ducks/thunks */ "./src/ducks/thunks.ts");
 /* harmony import */ var _api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../api/service */ "./src/api/service.ts");
 /* harmony import */ var _screenTimers__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./screenTimers */ "./src/components/screenTimers.tsx");
@@ -1077,13 +1077,15 @@ var __async = (__this, __arguments, generator) => {
 function AppView(props) {
   var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t, _u, _v;
   const { client, audio, queue } = props;
-  const service = new _api_service__WEBPACK_IMPORTED_MODULE_3__.Service(client);
-  const env = { service, audio, queue };
-  const [state, dispatch] = (0,_utils_useThunkReducer__WEBPACK_IMPORTED_MODULE_4__.useThunkReducer)(
-    (0,_ducks_reducer__WEBPACK_IMPORTED_MODULE_5__.reducerWrapper)(true),
+  const service = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => new _api_service__WEBPACK_IMPORTED_MODULE_3__.Service(client), [client]);
+  const env = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => ({ service, audio, queue }), [service, audio, queue]);
+  const reducer = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => (0,_ducks_reducer__WEBPACK_IMPORTED_MODULE_4__.reducerWrapper)(true), []);
+  const onActions = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => (0,_ducks_reducer__WEBPACK_IMPORTED_MODULE_4__.defaultOnActions)(env), [env]);
+  const [state, dispatch] = (0,_utils_useThunkReducer__WEBPACK_IMPORTED_MODULE_5__.useThunkReducer)(
+    reducer,
     props.initialState,
     env,
-    (0,_ducks_reducer__WEBPACK_IMPORTED_MODULE_5__.defaultOnActions)(env)
+    onActions
   );
   const stateRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(state);
   const autoUploadTimerRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(void 0);
@@ -47816,7 +47818,7 @@ function PraxonCloud_uploadSnapshot(args) {
       last_synced_storage: (_b = args.lastSyncedStorage) != null ? _b : null,
       storage_version: (_c = args.storage.version) != null ? _c : null,
       device_id: (_d = args.deviceId) != null ? _d : null,
-      app_version:  true ? "18a7dd1" : 0
+      app_version:  true ? "be0020a" : 0
     };
     const { data, error } = yield client.from(STORAGE_SNAPSHOTS_TABLE).upsert(payload, { onConflict: "user_id" }).select().single();
     if (error) {
@@ -76374,6 +76376,9 @@ var __async = (__this, __arguments, generator) => {
 
 function LogUtils_log(user, action, affiliates, subscriptions, onClear, key, referrer) {
   return __async(this, null, function* () {
+    if (true) {
+      return;
+    }
     let enforce = false;
     if (typeof window !== "undefined") {
       const currentUrl = (0,_url__WEBPACK_IMPORTED_MODULE_0__.UrlUtils_build)(window.location.href);
@@ -76973,7 +76978,7 @@ function lg(name, extra, service, tempUserId) {
   const event = {
     type: "event",
     timestamp: Date.now(),
-    commithash:  true ? "18a7dd1" : 0,
+    commithash:  true ? "be0020a" : 0,
     isMobile,
     iOSVersion: (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_isIos)() ? (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_iosAppVersion)() : void 0,
     androidVersion: (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_isAndroid)() ? (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_androidAppVersion)() : void 0,
@@ -77232,7 +77237,7 @@ function RollbarUtils_config(payload) {
       client: {
         javascript: {
           source_map_enabled: true,
-          code_version: "18a7dd17a4829c274341b161c766a32c15c5c60b",
+          code_version: "be0020a2a7f81c4e1ea97023bdcc823d5ab2fd68",
           guess_uncaught_frames: true
         }
       }
@@ -79289,4 +79294,4 @@ module.exports = JSON.parse('{"light":{"color":{"red50":"#FFF3F1","green50":"#EB
 /******/ })()
 ;
 /* LFTEND */
-//# sourceMappingURL=app.js.map?version=18a7dd1
+//# sourceMappingURL=app.js.map?version=be0020a

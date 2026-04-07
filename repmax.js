@@ -12345,13 +12345,13 @@ class Service {
   }
   programsIndex() {
     return __async(this, null, function* () {
-      const response = yield this.client(`${""}/programdata/index.json?v=${"18a7dd1"}`);
+      const response = yield this.client(`${""}/programdata/index.json?v=${"be0020a"}`);
       return response.json();
     });
   }
   programDetail(id, category = "builtin") {
     return __async(this, null, function* () {
-      const response = yield this.client(`${""}/programdata/programs/${category}/${id}.json?v=${"18a7dd1"}`);
+      const response = yield this.client(`${""}/programdata/programs/${category}/${id}.json?v=${"be0020a"}`);
       return response.json();
     });
   }
@@ -17593,7 +17593,7 @@ function PraxonCloud_uploadSnapshot(args) {
       last_synced_storage: (_b = args.lastSyncedStorage) != null ? _b : null,
       storage_version: (_c = args.storage.version) != null ? _c : null,
       device_id: (_d = args.deviceId) != null ? _d : null,
-      app_version:  true ? "18a7dd1" : 0
+      app_version:  true ? "be0020a" : 0
     };
     const { data, error } = yield client.from(STORAGE_SNAPSHOTS_TABLE).upsert(payload, { onConflict: "user_id" }).select().single();
     if (error) {
@@ -42058,6 +42058,9 @@ var __async = (__this, __arguments, generator) => {
 
 function LogUtils_log(user, action, affiliates, subscriptions, onClear, key, referrer) {
   return __async(this, null, function* () {
+    if (true) {
+      return;
+    }
     let enforce = false;
     if (typeof window !== "undefined") {
       const currentUrl = (0,_url__WEBPACK_IMPORTED_MODULE_0__.UrlUtils_build)(window.location.href);
@@ -42695,7 +42698,7 @@ function lg(name, extra, service, tempUserId) {
   const event = {
     type: "event",
     timestamp: Date.now(),
-    commithash:  true ? "18a7dd1" : 0,
+    commithash:  true ? "be0020a" : 0,
     isMobile,
     iOSVersion: (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_isIos)() ? (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_iosAppVersion)() : void 0,
     androidVersion: (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_isAndroid)() ? (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_androidAppVersion)() : void 0,
@@ -42855,7 +42858,7 @@ function RollbarUtils_config(payload) {
       client: {
         javascript: {
           source_map_enabled: true,
-          code_version: "18a7dd17a4829c274341b161c766a32c15c5c60b",
+          code_version: "be0020a2a7f81c4e1ea97023bdcc823d5ab2fd68",
           guess_uncaught_frames: true
         }
       }
@@ -100556,4 +100559,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ })()
 ;
 /* LFTEND */
-//# sourceMappingURL=repmax.js.map?version=18a7dd1
+//# sourceMappingURL=repmax.js.map?version=be0020a
