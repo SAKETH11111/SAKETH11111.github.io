@@ -782,4 +782,4 @@ function GraphsPlugins_programLines(programTimes) {
 
 }]);
 /* LFTEND */
-//# sourceMappingURL=src_pages_programs_programDetails_programDetailsExerciseExample_tsx.js.map?version=5d4041e
+//# sourceMappingURL=src_pages_programs_programDetails_programDetailsExerciseExample_tsx.js.map?version=4e8faba
