@@ -1,4 +1,4 @@
 /* LFTSTART */
 "use strict";(self.webpackChunkpraxon=self.webpackChunkpraxon||[]).push([[762],{7798:(e,r,n)=>{n.d(r,{F:()=>p});var s=n(6273),o=n(9119),a=n(5524);const t=s.E.configure({props:[(0,a.Gv)({StateVariable:a.pJ.variableName,Number:a.pJ.number,LineComment:a.pJ.lineComment,Unit:a.pJ.unit,Keyword:a.pJ.keyword}),o.uj.add({IfExpression:e=>e.column(e.node.from)+e.unit}),o.x0.add({IfExpression:o.Dv})]}),p=o.qp.define({name:"liftoscript",parser:t})},2960:(e,r,n)=>{n.r(r),n.d(r,{PlannerCodeBlock:()=>l});var s=n(5893),o=n(5524),a=n(6814),t=n(8032),p=n(1113),c=n(7798);const i=a.E.configure({props:[(0,o.Gv)(t.I)],wrap:(0,p.FE)((e=>"Liftoscript"===e.name?{parser:c.F.parser}:null))});function l(e){const{script:r}=e,n=function(e){const r=i.parse(e),n=[];return(0,o.bW)(r,o.$d,((e,r,s)=>{n.push({from:e,to:r,clazz:s})})),n.reduceRight(((e,r)=>{const n=`<span class="${r.clazz}">${e.slice(r.from,r.to)}</span>`;return e.slice(0,r.from)+n+e.slice(r.to)}),e)}(r);return(0,s.jsx)("div",{className:"block whitespace-pre code",dangerouslySetInnerHTML:{__html:n}})}}}]);
 /* LFTEND */
-//# sourceMappingURL=762.js.map?version=5d4041e
+//# sourceMappingURL=762.js.map?version=4e8faba
