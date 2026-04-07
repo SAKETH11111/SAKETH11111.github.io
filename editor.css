@@ -1,4 +1,9 @@
 /* LFTSTART */
+/*!************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/editor.css ***!
+  \************************************************************************************************************/
+/* @import "~codemirror/lib/codemirror.css";
+@import "~codemirror/addon/hint/show-hint.css"; */
 
 
 /* LFTEND */
