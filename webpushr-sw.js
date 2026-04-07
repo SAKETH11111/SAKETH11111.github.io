@@ -528,12 +528,12 @@ var __async = (__this, __arguments, generator) => {
   });
 };
 
-const cacheName = `liftosaur-sw-${"be0020a"}`;
+const cacheName = `liftosaur-sw-${"8f83a29"}`;
 const filesToCache = [
-  `/main.css?version=${"be0020a"}`,
-  `/main.js?version=${"be0020a"}`,
-  `/vendors.css?vendor=${"be0020a"}`,
-  `/vendors.js?vendor=${"be0020a"}`,
+  `/main.css?version=${"8f83a29"}`,
+  `/main.js?version=${"8f83a29"}`,
+  `/vendors.css?vendor=${"8f83a29"}`,
+  `/vendors.js?vendor=${"8f83a29"}`,
   `/images/back-muscles.svg`,
   `/images/front-muscles.svg`,
   `/images/svgs/muscles-combined.svg`,
@@ -625,4 +625,4 @@ initialize(self);
 /******/ })()
 ;
 /* LFTEND */
-//# sourceMappingURL=webpushr-sw.js.map?version=be0020a
+//# sourceMappingURL=webpushr-sw.js.map?version=8f83a29

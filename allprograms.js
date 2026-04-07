@@ -12345,13 +12345,13 @@ class Service {
   }
   programsIndex() {
     return __async(this, null, function* () {
-      const response = yield this.client(`${""}/programdata/index.json?v=${"be0020a"}`);
+      const response = yield this.client(`${""}/programdata/index.json?v=${"8f83a29"}`);
       return response.json();
     });
   }
   programDetail(id, category = "builtin") {
     return __async(this, null, function* () {
-      const response = yield this.client(`${""}/programdata/programs/${category}/${id}.json?v=${"be0020a"}`);
+      const response = yield this.client(`${""}/programdata/programs/${category}/${id}.json?v=${"8f83a29"}`);
       return response.json();
     });
   }
@@ -17241,6 +17241,11 @@ function Thunk_completeSetExternal(entryIndex, setIndex, restTimer, restTimerSin
       return;
     }
     const entry = progress.entries[entryIndex];
+    if (!entry) {
+      (0,_utils_sendMessage__WEBPACK_IMPORTED_MODULE_3__.SendMessage_print)(`Main App: Entry not found at index ${entryIndex}, skipping external completion`);
+      dispatch(Thunk_updateLiveActivity(entryIndex, setIndex, restTimer, restTimerSince));
+      return;
+    }
     const isWarmup = setIndex < entry.warmupSets.length;
     let adjustedSetIndex = setIndex;
     if (!isWarmup) {
@@ -18421,7 +18426,7 @@ function PraxonCloud_uploadSnapshot(args) {
       last_synced_storage: (_b = args.lastSyncedStorage) != null ? _b : null,
       storage_version: (_c = args.storage.version) != null ? _c : null,
       device_id: (_d = args.deviceId) != null ? _d : null,
-      app_version:  true ? "be0020a" : 0
+      app_version:  true ? "8f83a29" : 0
     };
     const { data, error } = yield client.from(STORAGE_SNAPSHOTS_TABLE).upsert(payload, { onConflict: "user_id" }).select().single();
     if (error) {
@@ -43545,7 +43550,7 @@ function lg(name, extra, service, tempUserId) {
   const event = {
     type: "event",
     timestamp: Date.now(),
-    commithash:  true ? "be0020a" : 0,
+    commithash:  true ? "8f83a29" : 0,
     isMobile,
     iOSVersion: (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_isIos)() ? (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_iosAppVersion)() : void 0,
     androidVersion: (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_isAndroid)() ? (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_androidAppVersion)() : void 0,
@@ -43768,7 +43773,7 @@ function RollbarUtils_config(payload) {
       client: {
         javascript: {
           source_map_enabled: true,
-          code_version: "be0020a2a7f81c4e1ea97023bdcc823d5ab2fd68",
+          code_version: "8f83a29b3e106fb4aa2a97b47341faf48b7097fd",
           guess_uncaught_frames: true
         }
       }
@@ -111685,4 +111690,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ })()
 ;
 /* LFTEND */
-//# sourceMappingURL=allprograms.js.map?version=be0020a
+//# sourceMappingURL=allprograms.js.map?version=8f83a29

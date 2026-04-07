@@ -488,13 +488,13 @@ class Service {
   }
   programsIndex() {
     return __async(this, null, function* () {
-      const response = yield this.client(`${""}/programdata/index.json?v=${"be0020a"}`);
+      const response = yield this.client(`${""}/programdata/index.json?v=${"8f83a29"}`);
       return response.json();
     });
   }
   programDetail(id, category = "builtin") {
     return __async(this, null, function* () {
-      const response = yield this.client(`${""}/programdata/programs/${category}/${id}.json?v=${"be0020a"}`);
+      const response = yield this.client(`${""}/programdata/programs/${category}/${id}.json?v=${"8f83a29"}`);
       return response.json();
     });
   }
@@ -1937,7 +1937,7 @@ function RollbarUtils_config(payload) {
       client: {
         javascript: {
           source_map_enabled: true,
-          code_version: "be0020a2a7f81c4e1ea97023bdcc823d5ab2fd68",
+          code_version: "8f83a29b3e106fb4aa2a97b47341faf48b7097fd",
           guess_uncaught_frames: true
         }
       }
@@ -35882,4 +35882,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ })()
 ;
 /* LFTEND */
-//# sourceMappingURL=userdashboard.js.map?version=be0020a
+//# sourceMappingURL=userdashboard.js.map?version=8f83a29

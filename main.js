@@ -12376,13 +12376,13 @@ class Service {
   }
   programsIndex() {
     return __async(this, null, function* () {
-      const response = yield this.client(`${""}/programdata/index.json?v=${"be0020a"}`);
+      const response = yield this.client(`${""}/programdata/index.json?v=${"8f83a29"}`);
       return response.json();
     });
   }
   programDetail(id, category = "builtin") {
     return __async(this, null, function* () {
-      const response = yield this.client(`${""}/programdata/programs/${category}/${id}.json?v=${"be0020a"}`);
+      const response = yield this.client(`${""}/programdata/programs/${category}/${id}.json?v=${"8f83a29"}`);
       return response.json();
     });
   }
@@ -20071,12 +20071,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _workoutExerciseSet__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./workoutExerciseSet */ "./src/components/workoutExerciseSet.tsx");
 /* harmony import */ var _models_set__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../models/set */ "./src/models/set.ts");
 /* harmony import */ var _icons_iconPlus2__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./icons/iconPlus2 */ "./src/components/icons/iconPlus2.tsx");
+/* harmony import */ var _icons_iconTrash__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./icons/iconTrash */ "./src/components/icons/iconTrash.tsx");
 /* harmony import */ var _utils_tailwindConfig__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/tailwindConfig */ "./src/utils/tailwindConfig.ts");
 /* harmony import */ var _utils_workoutExerciseUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/workoutExerciseUtils */ "./src/utils/workoutExerciseUtils.ts");
 /* harmony import */ var _models_equipment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../models/equipment */ "./src/models/equipment.ts");
 /* harmony import */ var _icons_iconSwapSmall__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./icons/iconSwapSmall */ "./src/components/icons/iconSwapSmall.tsx");
 /* harmony import */ var _progressStateChanges__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./progressStateChanges */ "./src/components/progressStateChanges.tsx");
 /* harmony import */ var _models_exercise__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../models/exercise */ "./src/models/exercise.ts");
+/* harmony import */ var _utils_collection__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../utils/collection */ "./src/utils/collection.ts");
 
 var __defProp = Object.defineProperty;
 var __defProps = Object.defineProperties;
@@ -20109,6 +20111,8 @@ var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 
 
 
+
+
 function getTargetColumnLabel(targetType) {
   switch (targetType) {
     case "target":
@@ -20122,7 +20126,7 @@ function getTargetColumnLabel(targetType) {
   }
 }
 function WorkoutExerciseAllSets(props) {
-  var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l;
+  var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o;
   const warmupSets = props.entry.warmupSets;
   const sets = props.entry.sets;
   const buttonBgColor = (0,_utils_workoutExerciseUtils__WEBPACK_IMPORTED_MODULE_2__.WorkoutExerciseUtils_getBgColor100)(sets, false);
@@ -20130,6 +20134,9 @@ function WorkoutExerciseAllSets(props) {
   const exerciseUnit = (_l = (_k = (_h = (_e = (_b = (_a = sets[0]) == null ? void 0 : _a.completedWeight) == null ? void 0 : _b.unit) != null ? _e : (_d = (_c = sets[0]) == null ? void 0 : _c.weight) == null ? void 0 : _d.unit) != null ? _h : (_g = (_f = warmupSets[0]) == null ? void 0 : _f.completedWeight) == null ? void 0 : _g.unit) != null ? _k : (_j = (_i = warmupSets[0]) == null ? void 0 : _i.weight) == null ? void 0 : _j.unit) != null ? _l : (0,_models_equipment__WEBPACK_IMPORTED_MODULE_4__.Equipment_getUnitOrDefaultForExerciseType)(props.settings, props.exerciseType);
   const targetLabel = getTargetColumnLabel(props.settings.workoutSettings.targetType);
   const lbEntry = (0,lens_shmens__WEBPACK_IMPORTED_MODULE_1__.lb)().p("entries").i(props.entryIndex);
+  const currentSetVariation = (_o = (_m = props.programExercise) == null ? void 0 : _m.evaluatedSetVariations.find((variation) => variation.isCurrent)) != null ? _o : (_n = props.programExercise) == null ? void 0 : _n.evaluatedSetVariations[0];
+  const prescribedWorkoutSetCount = currentSetVariation == null ? void 0 : currentSetVariation.sets.length;
+  const canRemoveLastWorkoutSet = sets.length > 0 && !(0,_models_set__WEBPACK_IMPORTED_MODULE_3__.Reps_isFinishedSet)(sets[sets.length - 1]) && (props.programExercise == null || prescribedWorkoutSetCount == null || sets.length > prescribedWorkoutSetCount);
   return /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [
     /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "table w-full overflow-hidden", children: [
       /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "table-row-group", children: /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "table-row text-xs border-b text-text-secondary border-border-subtle", children: [
@@ -20241,29 +20248,57 @@ function WorkoutExerciseAllSets(props) {
           ]
         }
       ) }),
-      /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "flex-1", children: /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(
-        "button",
-        {
-          className: `${buttonBgColor} w-full py-2 text-xs font-semibold text-center rounded-md text-text-link`,
-          "data-cy": "add-workout-set",
-          onClick: () => {
-            const isUnilateral = (0,_models_exercise__WEBPACK_IMPORTED_MODULE_10__.Exercise_getIsUnilateral)(props.exerciseType, props.settings);
-            (0,_models_state__WEBPACK_IMPORTED_MODULE_9__.updateProgress)(
-              props.dispatch,
-              [
-                props.lbSets.recordModify(
-                  (s) => (0,_models_set__WEBPACK_IMPORTED_MODULE_3__.Reps_addSet)(s, isUnilateral, props.lastSets ? props.lastSets[props.lastSets.length - 1] : void 0)
-                )
-              ],
-              "add-set"
-            );
-          },
-          children: [
-            /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_icons_iconPlus2__WEBPACK_IMPORTED_MODULE_11__.IconPlus2, { size: 10, className: "inline-block", color: (0,_utils_tailwindConfig__WEBPACK_IMPORTED_MODULE_6__.Tailwind_colors)().blue[400] }) }),
-            /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "ml-2", children: "Add Set" })
-          ]
-        }
-      ) })
+      /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: "flex-1", children: /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: "space-y-2", children: [
+        /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(
+          "button",
+          {
+            className: `${buttonBgColor} w-full py-2 text-xs font-semibold text-center rounded-md text-text-link`,
+            "data-cy": "add-workout-set",
+            onClick: () => {
+              const isUnilateral = (0,_models_exercise__WEBPACK_IMPORTED_MODULE_10__.Exercise_getIsUnilateral)(props.exerciseType, props.settings);
+              (0,_models_state__WEBPACK_IMPORTED_MODULE_9__.updateProgress)(
+                props.dispatch,
+                [
+                  props.lbSets.recordModify(
+                    (s) => (0,_models_set__WEBPACK_IMPORTED_MODULE_3__.Reps_addSet)(s, isUnilateral, props.lastSets ? props.lastSets[props.lastSets.length - 1] : void 0)
+                  )
+                ],
+                "add-set"
+              );
+            },
+            children: [
+              /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_icons_iconPlus2__WEBPACK_IMPORTED_MODULE_11__.IconPlus2, { size: 10, className: "inline-block", color: (0,_utils_tailwindConfig__WEBPACK_IMPORTED_MODULE_6__.Tailwind_colors)().blue[400] }) }),
+              /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "ml-2", children: "Add Set" })
+            ]
+          }
+        ),
+        canRemoveLastWorkoutSet && /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(
+          "button",
+          {
+            className: "w-full py-2 text-xs font-semibold text-center rounded-md bg-background-default text-text-error border border-border-neutral",
+            "data-cy": "remove-last-workout-set",
+            onClick: () => {
+              (0,_models_state__WEBPACK_IMPORTED_MODULE_9__.updateProgress)(
+                props.dispatch,
+                [
+                  props.lbSets.recordModify((currentSets) => {
+                    const newSets = (0,_utils_collection__WEBPACK_IMPORTED_MODULE_12__.CollectionUtils_removeAt)(currentSets, currentSets.length - 1);
+                    for (let setIndex = 0; setIndex < newSets.length; setIndex += 1) {
+                      newSets[setIndex].index = setIndex;
+                    }
+                    return newSets;
+                  })
+                ],
+                "remove-last-set"
+              );
+            },
+            children: [
+              /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_icons_iconTrash__WEBPACK_IMPORTED_MODULE_13__.IconTrash, { width: 12, height: 14, color: (0,_utils_tailwindConfig__WEBPACK_IMPORTED_MODULE_6__.Tailwind_colors)().red[500], style: { display: "inline-block" } }) }),
+              /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: "ml-2", children: "Remove Last Set" })
+            ]
+          }
+        )
+      ] }) })
     ] })
   ] });
 }
@@ -22248,6 +22283,11 @@ function Thunk_completeSetExternal(entryIndex, setIndex, restTimer, restTimerSin
       return;
     }
     const entry = progress.entries[entryIndex];
+    if (!entry) {
+      (0,_utils_sendMessage__WEBPACK_IMPORTED_MODULE_3__.SendMessage_print)(`Main App: Entry not found at index ${entryIndex}, skipping external completion`);
+      dispatch(Thunk_updateLiveActivity(entryIndex, setIndex, restTimer, restTimerSince));
+      return;
+    }
     const isWarmup = setIndex < entry.warmupSets.length;
     let adjustedSetIndex = setIndex;
     if (!isWarmup) {
@@ -23428,7 +23468,7 @@ function PraxonCloud_uploadSnapshot(args) {
       last_synced_storage: (_b = args.lastSyncedStorage) != null ? _b : null,
       storage_version: (_c = args.storage.version) != null ? _c : null,
       device_id: (_d = args.deviceId) != null ? _d : null,
-      app_version:  true ? "be0020a" : 0
+      app_version:  true ? "8f83a29" : 0
     };
     const { data, error } = yield client.from(STORAGE_SNAPSHOTS_TABLE).upsert(payload, { onConflict: "user_id" }).select().single();
     if (error) {
@@ -50222,7 +50262,7 @@ function lg(name, extra, service, tempUserId) {
   const event = {
     type: "event",
     timestamp: Date.now(),
-    commithash:  true ? "be0020a" : 0,
+    commithash:  true ? "8f83a29" : 0,
     isMobile,
     iOSVersion: (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_isIos)() ? (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_iosAppVersion)() : void 0,
     androidVersion: (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_isAndroid)() ? (0,_sendMessage__WEBPACK_IMPORTED_MODULE_0__.SendMessage_androidAppVersion)() : void 0,
@@ -50382,7 +50422,7 @@ function RollbarUtils_config(payload) {
       client: {
         javascript: {
           source_map_enabled: true,
-          code_version: "be0020a2a7f81c4e1ea97023bdcc823d5ab2fd68",
+          code_version: "8f83a29b3e106fb4aa2a97b47341faf48b7097fd",
           guess_uncaught_frames: true
         }
       }
@@ -143062,4 +143102,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ })()
 ;
 /* LFTEND */
-//# sourceMappingURL=main.js.map?version=be0020a
+//# sourceMappingURL=main.js.map?version=8f83a29
